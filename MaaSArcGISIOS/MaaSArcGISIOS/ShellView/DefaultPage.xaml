@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaaSArcGISIOS.ShellView.DefaultPage"
+             Title="기본 화면">
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid x:Name="xEsriMapLayout"/>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="Start" Margin="10,90,0,0">
+                <Label FontSize="11" TextColor="Black" x:Name="xLastUpdateTimeLabel" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Label FontSize="11" TextColor="Black" x:Name="xBatteryLabel" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Label FontSize="11" TextColor="Black" x:Name="xAngleLabel" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Label FontSize="11" TextColor="Black" x:Name="xSpeedLabel" VerticalOptions="Center" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="End" Margin="0,10,10,0" Orientation="Horizontal">
+                <Label FontSize="12" TextColor="Green" Text="Auto Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Switch x:Name="xAutoCenterSwitch" IsToggled="False" Toggled="AutoCenterSwitch_Toggled"/>
+            </StackLayout>
+            <ProgressBar x:Name="xBackDistanceProgress" Rotation="270" Progress="0.0" ProgressColor="Orange" ScaleY="4" Margin="-7.5,0,7.5,120" HorizontalOptions="StartAndExpand" VerticalOptions="End" ScaleX="4"/>
+        </Grid>
+        <StackLayout Grid.Row="1" BackgroundColor="DimGray" x:Name="xGridPanel">
+            <Grid VerticalOptions="End">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="VerticalTextAlignment" Value="Center"/>
+                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="11.5"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <StackLayout Padding="12.5,0,12.5,2.5">
+                    <StackLayout x:Name="xBehindSensorStackLayout"/>
+                    <Label Text="후방 감지" TextColor="White" x:Name="xBehindSensorCountLabel" HorizontalOptions="Start"/>
+                </StackLayout>
+            </Grid>
+            <Grid VerticalOptions="Start">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="VerticalTextAlignment" Value="Center"/>
+                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="11.5"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal" Grid.Column="0" Padding="10,2.5,0,0">
+                    <Label Text="위치 :" TextColor="White"/>
+                    <Label x:Name="xLocationInfoLabel" Text=""  TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0,2.5,10,0">
+                    <Label Text="기압 :" TextColor="White"/>
+                    <Label x:Name="xLocationAngleLabel" Text=""  TextColor="White"/>
+                </StackLayout>
+            </Grid>
+            <Grid VerticalOptions="Start">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="VerticalTextAlignment" Value="Center"/>
+                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="11.5"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="가속도" TextColor="White" Grid.Column="0" Padding="10,0,0,0"/>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0,0,0,0">
+                    <Label Text="X : " TextColor="White"/>
+                    <Label x:Name="xXAxisMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="2" Padding="0,0,0,0">
+                    <Label Text="Y : " TextColor="White"/>
+                    <Label x:Name="xYAxisMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="3" Padding="0,0,0,0">
+                    <Label Text="Z : " TextColor="White"/>
+                    <Label x:Name="xZAxisMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+            </Grid>
+            <Grid VerticalOptions="Start" IsVisible="False">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="VerticalTextAlignment" Value="Center"/>
+                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="11.5"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="편차값" TextColor="White" Grid.Column="0" Padding="10,0,0,2.5"/>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0,0,0,2.5">
+                    <Label Text="X : " TextColor="White"/>
+                    <Label x:Name="xXAxisDeviationMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="2" Padding="0,0,0,2.5">
+                    <Label Text="Y : " TextColor="White"/>
+                    <Label x:Name="xYAxisDeviationMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="3" Padding="0,0,10,2.5">
+                    <Label Text="Z : " TextColor="White"/>
+                    <Label x:Name="xZAxisDeviationMPULabel" Text="" TextColor="White"/>
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

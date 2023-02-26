@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="MaaSArcGISIOS.ShellView.SettingPage"
+              Title="설정">
+    <TableView>
+        <TableRoot>
+            <TableSection Title="가중치 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="바퀴 크기 입력" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="0.5" Increment="0.1" Maximum="3.0" x:Name="xWheelStepper" ValueChanged="xWheelStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xWheelLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+                <SwitchCell Text="충격흡수장치 유무" On="False" x:Name="xIsSuspensionSwitch"/>
+            </TableSection>
+
+            <TableSection Title="PDat 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="Distnace Grouping" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="1.0" Increment="0.1" Maximum="10" x:Name="xPdatDistanceStepper" ValueChanged="xPdatDistanceStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xPdatDistanceLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+            </TableSection>
+
+            <TableSection Title="무시 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="일정 속도이하 무시" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="2.0" Increment="1.0" Maximum="20" x:Name="xIgnoreSppedStepper" ValueChanged="xIgnoreSppedStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xIgnoreSppedLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+            </TableSection>
+
+            <TableSection Title="경고 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="요철값" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="1.0" Increment="1" Maximum="30.0" Value="10.0" x:Name="xMPURiskLimitStepper" ValueChanged="xMPURiskLimitStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xMPURiskLimitLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="혼잡도" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="1.0" Increment="1" Maximum="12.0" Value="5" x:Name="xPdatRiskLimitStepper" ValueChanged="xPdatRiskLimitStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xPdatRiskLimitLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="기울기(절대값)" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="1.0" Increment="1" Maximum="90.0" Value="7.0" x:Name="xAngleRiskLimitStepper" ValueChanged="xAngleRiskLimitStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xAngleRiskLimitLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="후방센서 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="경보거리 설정" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="0.5" Increment="0.1" Maximum="30.0" x:Name="xBackWarningMeterStepper" ValueChanged="xBackWarningMeterStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xBackWarningMeterLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+            </TableSection>
+
+            <TableSection Title="시뮬레이션 설정">
+                <ViewCell>
+                    <xct:DockLayout Margin="15,0,15,0">
+                        <Label xct:DockLayout.Dock="Left" Text="속도 설정" VerticalTextAlignment="Center"/>
+                        <Stepper xct:DockLayout.Dock="Right" VerticalOptions="Center" Minimum="20" Increment="1.0" Maximum="120.0" x:Name="xSimulationSpeedStepper" ValueChanged="xSimulationSpeedStepper_ValueChanged"/>
+                        <Label Text="" VerticalTextAlignment="Center" HorizontalTextAlignment="End" x:Name="xSimulationSpeedLabel"/>
+                    </xct:DockLayout>
+                </ViewCell>
+                <SwitchCell Text="시뮬레이션 데이터 저장" On="True" x:Name="xIsSimulationSaveSwitch" OnChanged="xIsSimulationSaveSwitch_OnChanged"/>
+            </TableSection>
+
+            <TableSection Title="경로탐색 설정">
+                <ViewCell>
+                    <Grid Margin="15,0,15,0" IsVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="알고리즘 선택" VerticalTextAlignment="Center"/>
+                        <RadioButton Grid.Column="1" Content="최적" HorizontalOptions="Center" VerticalOptions="Center" GroupName="xNavigateRouteRadioButton" x:Name="xNavigateRadioButton1" CheckedChanged="xNavigateRadioButton_CheckedChanged"/>
+                        <RadioButton Grid.Column="2" Content="안전" HorizontalOptions="Center" IsChecked="True" VerticalOptions="Center" GroupName="xNavigateRouteRadioButton" x:Name="xNavigateRadioButton2" CheckedChanged="xNavigateRadioButton_CheckedChanged"/>
+                        <RadioButton Grid.Column="3" Content="편한" HorizontalOptions="Center" VerticalOptions="Center" GroupName="xNavigateRouteRadioButton" x:Name="xNavigateRadioButton3" CheckedChanged="xNavigateRadioButton_CheckedChanged"/>
+                    </Grid>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

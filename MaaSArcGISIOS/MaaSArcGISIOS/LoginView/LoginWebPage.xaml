@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:hybird="clr-namespace:Plugin.HybridWebView.Shared;assembly=Plugin.HybridWebView"
+             x:Class="MaaSArcGISIOS.LoginView.LoginWebPage">
+    <Grid Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <hybird:HybridWebViewControl Grid.Row="0" x:Name="xWebView" IsVisible="true"/>
+
+        <Label Text="잠시만 기다려 주세요." x:Name="xWaitLabel" IsVisible="false" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+    </Grid>
+</ContentPage>

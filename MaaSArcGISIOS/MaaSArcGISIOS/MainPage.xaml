@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="SaeaICT Project Version 1.0.0"
+             x:Class="MaaSArcGISIOS.MainPage">
+    <Shell.FlyoutHeader/>
+    <FlyoutItem Title="기본화면">
+        <ShellContent x:Name="xDefulatShellContent"/>
+    </FlyoutItem>
+    <FlyoutItem Title="경로탐색">
+        <ShellContent x:Name="xNaviationShellContent"/>
+    </FlyoutItem>
+    <FlyoutItem Title="설정화면">
+        <ShellContent x:Name="xSettingShellContent"/>
+    </FlyoutItem>
+    <FlyoutItem Title="SSR">
+        <ShellContent x:Name="xSSRShellContent"/>
+    </FlyoutItem>
+    <MenuItem>
+    </MenuItem>
+    <Shell.FlyoutFooter/>
+</Shell>
